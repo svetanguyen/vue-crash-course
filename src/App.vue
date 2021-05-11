@@ -1,7 +1,10 @@
 <template>
   <h1>To do application </h1>
   <hr>
-  <TodoList />
+  <TodoList 
+    v-bind:todos="todos"
+    @remove-todo="removeTodo"
+  />
 </template>
 
 <script>
@@ -19,6 +22,11 @@ export default {
   },
   components: {
     TodoList    
+  },
+  methods: {
+    removeTodo(id) {  
+      this.todos = this.todos.filter(t => t.id !== id)
+    } 
   }
 }
 </script>
